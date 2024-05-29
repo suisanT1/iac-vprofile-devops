@@ -27,7 +27,7 @@ terraform {
   }
 
   backend "s3" {
-    bucket = "gitopsterrastate"
+    bucket = "terra-state-dove-sui"
     key    = "terraform.tfstate"
     region = "us-east-2"
   }
