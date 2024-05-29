@@ -64,12 +64,12 @@ jobs:
         with:
           aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws_region: ${{ env.AWS_REGION }}
+          aws_region: ${{ AWS_REGION }}
 
       - name: Get Kube Config file
         id: getconfig
         if: steps.apply.outcome == 'success'
-        run: aws eks update-kubeconfig --region ${env.AWS_REGION} --name ${env.EKS_CLUSTER}
+        run: aws eks update-kubeconfig --region ${AWS_REGION} --name ${EKS_CLUSTER}
 
       - name: Install Ingress controller
         if: steps.apply.outcome == 'success' && steps.getconfig.outcome == 'success'
